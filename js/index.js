@@ -5,7 +5,7 @@ const reposList = document.getElementById("repos-list");
 document.addEventListener("DOMContentLoaded", ()=>{
     form.addEventListener("submit", (e)=>{
         e.preventDefault();
-        let search = e.target.search.value;
+        const search = e.target.search.value;
         fetch('https://api.github.com/search/users?q=' + search, {
         method: 'GET',
         header:{
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         .then(res=>res.json())
         .then(users =>{
             users.items.forEach(user =>{
-                let result = document.createElement("li");
+                const  result = document.createElement("li");
                 li.className = "all-users";
                 li.innerHTML = 
                 `<div class="content">
@@ -28,10 +28,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                     </div>
                     <img src=${user.avatar_url}>
                 </div>`;
-                userList.append(result);
-
-           
-                })
+                userList.append(result); })
             })
         .catch(err => console.log(err.message));
         })
